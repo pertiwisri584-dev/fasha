@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TransCultural Ageing Hub - Global, Indonesia, & Japan</title>
+  <!-- Google Fonts & FontAwesome for Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6A040F;      /* Burgundy / Rich Plum */
+      --secondary: #D4A373;    /* Warm Mustard / Gold */
+      --bg-color: #FEFAE0;     /* Alabaster / Ivory */
+      --card-bg: #FFFFFF;
+      --text-color: #3A2E2B;   /* Deep Espresso Brown */
+      --accent-light: #F4EDD3;
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.7;
+    }
+
+    /* Navbar Modern */
+    header {
+      background-color: rgba(254, 250, 224, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(212, 163, 115, 0.3);
+      padding: 1rem 3%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .brand-logo i {
+      font-size: 1.5rem;
+      color: var(--secondary);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 0.15rem;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.3rem 0.4rem;
+      border-radius: 6px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    nav ul li a:hover, nav ul li a.active {
+      background-color: var(--primary);
+      color: #FFF;
+      transform: translateY(-2px);
+    }
+
+    /* QR Code Widget Pojok Kanan Navbar */
+    .qr-nav-widget {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .qr-trigger-btn {
+      background: var(--accent-light);
+      border: 1px solid var(--secondary);
+      color: var(--primary);
+      padding: 0.35rem 0.65rem;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: var(--transition);
+    }
+
+    .qr-trigger-btn:hover {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Dropdown QR Card */
+    .qr-dropdown-card {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: var(--card-bg);
+      border: 2px solid var(--secondary);
+      border-radius: 14px;
+      padding: 1rem;
+      width: 210px;
+      box-shadow: 0 10px 25px rgba(106, 4, 15, 0.15);
+      display: none;
+      text-align: center;
+      animation: fadeIn 0.3s ease-in-out forwards;
+      z-index: 1100;
+    }
+
+    .qr-dropdown-card.show {
+      display: block;
+    }
+
+    .qr-dropdown-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 0.5rem;
+    }
+
+    .qr-dropdown-card h4 {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    /* Page Sections */
+    .page-section {
+      display: none;
+      padding: 4rem 8%;
+      min-height: 85vh;
+      animation: fadeIn 0.4s ease-in-out forwards;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Section (Menu 1) */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-text h1 {
+      color: var(--primary);
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      line-height: 1.15;
+    }
+
+    .hero-text p {
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      color: #5C4B47;
+    }
+
+    /* AI Global Companion Widget */
+    .hero-character-box {
+      background: var(--card-bg);
+      border: 2px solid var(--secondary);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(106, 4, 15, 0.08);
+      position: relative;
+    }
+
+    .speech-bubble {
+      background: var(--accent-light);
+      border: 1px solid var(--secondary);
+      padding: 1.1rem 1.2rem;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+      min-height: 95px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: var(--accent-light) transparent;
+      display: block;
+      width: 0;
+    }
+
+    .nurse-avatar-container {
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      border-radius: 50%;
+      margin: 0 auto 1.2rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 8px 20px rgba(106,4,15,0.2);
+      animation: floatAvatar 4s ease-in-out infinite;
+    }
+
+    .nurse-avatar-container i {
+      font-size: 2.8rem;
+      margin-bottom: 0.2rem;
+    }
+
+    @keyframes floatAvatar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Language Selector & Prompt Controls */
+    .ai-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .lang-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .lang-btn {
+      background: var(--bg-color);
+      border: 1px solid var(--secondary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--text-color);
+    }
+
+    .lang-btn:hover, .lang-btn.active-lang {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .ai-prompt-box {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .ai-prompt-box input {
+      flex: 1;
+      padding: 0.55rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid #D4A373;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .ai-prompt-box button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.55rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+
+    .ai-prompt-box button:hover {
+      background-color: #53030B;
+    }
+
+    /* Interactive Country Switcher Panel (Menu 1) */
+    .country-switch-container {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 2.5rem;
+      border: 1px solid rgba(212, 163, 115, 0.4);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+    }
+
+    .country-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .country-tab-btn {
+      background-color: var(--bg-color);
+      border: 2px solid var(--secondary);
+      color: var(--text-color);
+      padding: 0.75rem 1.8rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .country-tab-btn:hover, .country-tab-btn.active-country {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .country-panel {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out forwards;
+    }
+
+    .country-panel.active-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Section Titles & Cards */
+    .section-header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .section-header h2 {
+      color: var(--primary);
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      color: #6C584C;
+      font-size: 1.05rem;
+    }
+
+    .interactive-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(212, 163, 115, 0.4);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .interactive-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(106, 4, 15, 0.08);
+      border-color: var(--secondary);
+    }
+
+    .interactive-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background-color: var(--secondary);
+    }
+
+    .interactive-card h3 {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .interactive-card h3 i {
+      color: var(--secondary);
+    }
+
+    .icope-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    /* Table Styling */
+    .icope-table-container {
+      overflow-x: auto;
+      margin-top: 1.5rem;
+    }
+
+    .icope-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .icope-table th, .icope-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+
+    .icope-table th {
+      background-color: var(--primary);
+      color: white;
+      font-weight: bold;
+    }
+
+    .icope-table tr:hover {
+      background-color: var(--accent-light);
+    }
+
+    /* Interactive Age Checker Tool (Menu 2) */
+    .age-checker-box {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 700px;
+      margin: 0 auto 3rem auto;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      border: 1px solid rgba(212, 163, 115, 0.4);
+      text-align: center;
+    }
+
+    .age-input-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .age-input-group input {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 2px solid #D4A373;
+      font-size: 1rem;
+      width: 180px;
+      outline: none;
+      text-align: center;
+    }
+
+    .age-input-group button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .age-input-group button:hover {
+      background-color: #53030B;
+    }
+
+    #age-result {
+      margin-top: 1.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--primary);
+      min-height: 30px;
+    }
+
+    /* Interactive Gerontological Risk Assessment Calculator (Menu 4) */
+    .calculator-box {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 750px;
+      margin: 3rem auto 2rem auto;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      border: 1px solid rgba(212, 163, 115, 0.4);
+    }
+
+    .calc-question {
+      margin-bottom: 1.5rem;
+    }
+
+    .calc-question label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .calc-question select {
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: 1px solid #D4A373;
+      background: var(--bg-color);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .calc-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 0.85rem;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1rem;
+    }
+
+    .calc-btn:hover {
+      background-color: #53030B;
+    }
+
+    #calc-result {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--accent-light);
+      border-radius: 8px;
+      border: 1px solid var(--secondary);
+      font-weight: 600;
+      text-align: center;
+      color: var(--primary);
+      display: none;
+    }
+
+    /* LTC Interactive Tabs (Menu 6) */
+    .ltc-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .ltc-tab-btn {
+      background: var(--bg-color);
+      border: 1px solid var(--secondary);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .ltc-tab-btn:hover, .ltc-tab-btn.active-ltc {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .ltc-panel {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out forwards;
+    }
+
+    .ltc-panel.active-panel {
+      display: block;
+    }
+
+    /* Click-to-Show / Toggle Accordion Styles (Menu 10) */
+    .toggle-header {
+      background: var(--accent-light);
+      color: var(--primary);
+      padding: 1.1rem 1.4rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+      border: 1px solid var(--secondary);
+      margin-bottom: 0.8rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .toggle-header:hover {
+      background-color: var(--primary);
+      color: #FFF;
+    }
+
+    .toggle-content {
+      display: none;
+      padding: 1.8rem;
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid rgba(212, 163, 115, 0.4);
+      margin-bottom: 1.5rem;
+      animation: fadeIn 0.3s ease-in-out forwards;
+    }
+
+    .toggle-content.show {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary);
+      color: #FFF;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1300px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 2.3rem;
+      }
+      nav ul {
+        justify-content: center;
+        margin-top: 0.5rem;
+      }
+      header {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+      }
+      .nav-container {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar with QR Code on Top Right -->
+  <header>
+    <div class="brand-logo">
+      <i class="fa-solid fa-hands-holding-child"></i>
+      <span>TransCultural Ageing Hub</span>
+    </div>
+    
+    <div class="nav-container">
+      <nav>
+        <ul>
+          <li><a href="#" onclick="switchTab(event, 'menu1')" class="nav-link active"><i class="fa-solid fa-globe"></i> Population</a></li>
+          <li><a href="#" onclick="switchTab(event, 'menu2')" class="nav-link"><i class="fa-solid fa-user-clock"></i> Age Range</a></li>
+          <li><a href="#" onclick="switchTab(event, 'menu3')" class="nav-link"><i class="fa-solid fa-sitemap"></i> Organizations</a></li>
+          <li><a href="#" onclick="switchTab(event, 'menu4')" class="nav-link"><i class="fa-solid fa-heart-pulse"></i> Healthy Ageing</a></li>
+          <li><a href="#" onclick="switchTab(event, 'menu5')" class="nav-link"><i class="fa-solid fa-scale-balanced"></i> ID Institutions</a></li>
+          <li><a href="#" onclick="switchTab(event, 'menu6')" class="nav-link"><i class="fa-solid fa-id-card-clip"></i> ID Programs & LTC</a></li>
+          <li><a href="#" onclick="switchTab(event, 'menu7')" class="nav-link"><i class="fa-solid fa-seedling"></i> JP Institutions</a></li>
+          <li><a href="#" onclick="switchTab(event, 'menu8')" class="nav-link"><i class="fa-solid fa-file-shield"></i> Kaigo Hoken</a></li>
+          <li><a href="#" onclick="switchTab(event, 'menu9')" class="nav-link"><i class="fa-solid fa-robot"></i> JP Technology</a></li>
+          <li><a href="#" onclick="switchTab(event, 'menu10')" class="nav-link"><i class="fa-solid fa-chart-line"></i> Analysis & Adoption</a></li>
+          <li><a href="#" onclick="switchTab(event, 'menu11')" class="nav-link"><i class="fa-solid fa-book-open-reader"></i> Reflection</a></li>
+        </ul>
+      </nav>
+
+      <!-- Top Right QR Code Widget -->
+      <div class="qr-nav-widget" onmouseenter="toggleQRPopup(true)" onmouseleave="toggleQRPopup(false)">
+        <button class="qr-trigger-btn" onclick="toggleQRPopup()">
+          <i class="fa-solid fa-qrcode"></i> Feature QR
+        </button>
+        <div id="qr-card" class="qr-dropdown-card">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://pertiwisri584-dev.github.io/Transkultur/" alt="Integration Feature for Healthy Ageing QR">
+          <h4>Integration Feature for Healthy Ageing</h4>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MENU 1: Population (Global, Indonesia, & Japan) -->
+  <section id="menu1" class="page-section active">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>Elderly Population Dynamics: Global, Indonesia, & Japan</h1>
+        <p>The 21st century witnesses massive demographic transitions. Declining fertility rates and rising life expectancies are transforming the global age structure from traditional pyramids into column structures.</p>
+        <p>Use the selector buttons below to instantly view comparisons across Global overviews, conditions in Indonesia, and Japan's specific profile.</p>
+      </div>
+      
+      <!-- AI Global Companion Widget -->
+      <div class="hero-character-box">
+        <div id="ai-speech-bubble" class="speech-bubble">
+          "Hello! Ask me about elderly comparisons globally, in Indonesia, or Japan's health profile!"
+        </div>
+        
+        <div class="nurse-avatar-container">
+          <i class="fa-solid fa-user-nurse"></i>
+          <span style="font-size: 0.75rem; font-weight: 600; letter-spacing: 1px;">GLOBAL AI</span>
+        </div>
+
+        <!-- Language Controls & AI Prompt -->
+        <div class="ai-controls">
+          <div class="lang-buttons">
+            <button class="lang-btn" onclick="setAILanguage('id')">🇮🇩 ID</button>
+            <button class="lang-btn" onclick="setAILanguage('jp')">🇯🇵 JP</button>
+            <button class="lang-btn" onclick="setAILanguage('de')">🇩🇪 DE</button>
+            <button class="lang-btn active-lang" onclick="setAILanguage('en')">🇺🇸 EN</button>
+          </div>
+          <div class="ai-prompt-box">
+            <input type="text" id="ai-user-input" placeholder="Ask: Indonesia, Japan, Global..." onkeypress="handleAIKeypress(event)">
+            <button onclick="askAICompanion()"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Country Switcher Panel -->
+    <div class="country-switch-container">
+      <div class="country-tabs">
+        <button class="country-tab-btn active-country" onclick="switchCountryTab(event, 'panel-global')">
+          <i class="fa-solid fa-earth-americas"></i> Globally
+        </button>
+        <button class="country-tab-btn" onclick="switchCountryTab(event, 'panel-indonesia')">
+          <i class="fa-solid fa-flag"></i> In Indonesia
+        </button>
+        <button class="country-tab-btn" onclick="switchCountryTab(event, 'panel-jepang')">
+          <i class="fa-solid fa-seedling"></i> Japan Profile
+        </button>
+      </div>
+
+      <!-- PANEL 1: GLOBAL -->
+      <div id="panel-global" class="country-panel active-panel">
+        <div class="interactive-card">
+          <h3><i class="fa-solid fa-chart-pie"></i> Global Population Boom</h3>
+          <ul>
+            <li><strong>Surging Numbers:</strong> The global population aged 60 and older is projected to reach 2.1 billion by 2050.</li>
+            <li><strong>Acceleration in Developing Nations:</strong> Aging processes in Asia and Latin America are occurring much faster.</li>
+            <li><strong>Column Pyramid:</strong> Shift in age structures from wide triangles to straight columns.</li>
+          </ul>
+        </div>
+        <div class="interactive-card">
+          <h3><i class="fa-solid fa-venus-mars"></i> Feminization of Aging</h3>
+          <ul>
+            <li><strong>Longer Life Expectancy:</strong> Women dominate the oldest-old age groups.</li>
+            <li><strong>Widowhood Vulnerability:</strong> Elderly women tend to live alone more frequently.</li>
+            <li><strong>Service Demands:</strong> Addressing osteoporosis and women's social support needs.</li>
+          </ul>
+        </div>
+        <div class="interactive-card">
+          <h3><i class="fa-solid fa-earth-americas"></i> Cross-Cultural Implications</h3>
+          <ul>
+            <li><strong>Family Norms:</strong> Co-residence culture dominates in Asia, while independent living prevails in the West.</li>
+            <li><strong>Social Stigma (Ageism):</strong> Age discrimination affects healthcare access.</li>
+            <li><strong>Nurse Competency:</strong> Demands for nursing care aligned with traditional values.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PANEL 2: INDONESIA -->
+      <div id="panel-indonesia" class="country-panel">
+        <div class="interactive-card">
+          <h3><i class="fa-solid fa-id-card"></i> Demographics & Elderly Growth</h3>
+          <ul>
+            <li><strong>Population Size:</strong> Seniors (65+) in Indonesia have reached over **30 million people** (**11% - 12%** of total population).</li>
+            <li><strong>Aging Structure:</strong> Indonesia officially enters the aging population era (exceeding 10%).</li>
+            <li><strong>Regional Variation:</strong> DI Yogyakarta and Central Java record the highest proportions of elderly populations.</li>
+          </ul>
+        </div>
+        <div class="interactive-card">
+          <h3><i class="fa-solid fa-notes-medical"></i> Morbidity & Disease Profile</h3>
+          <ul>
+            <li><strong>Non-Communicable Diseases:</strong> Dominated by hypertension, stroke, diabetes mellitus, and rheumatoid arthritis.</li>
+            <li><strong>Life Expectancy:</strong> Ranging between **71 and 73 years**.</li>
+            <li><strong>Primary Facilities:</strong> The role of elderly Posyandu and Puskesmas as frontline early screening posts.</li>
+          </ul>
+        </div>
+        <div class="interactive-card">
+          <h3><i class="fa-solid fa-house-chimney-user"></i> Culture & Long-Term Care</h3>
+          <ul>
+            <li><strong>Family Support:</strong> Most elderly live with children or extended families (gotong royong spirit).</li>
+            <li><strong>Nursing Homes (Panti Wreda):</strong> Shelters for abandoned seniors or those lacking family support.</li>
+            <li><strong>Social Security:</strong> Expanding JKN access and old-age security for informal workers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PANEL 3: JAPAN -->
+      <div id="panel-jepang" class="country-panel">
+        <div class="interactive-card">
+          <h3><i class="fa-solid fa-chart-line"></i> Life Expectancy</h3>
+          <ul>
+            <li><strong>Global Ranking:</strong> World top rank, averaging above **84 to 87 years**.</li>
+            <li><strong>Female Life Expectancy:</strong> World's highest (approaching 87–88 years) supported by traditional diets.</li>
+            <li><strong>Healthspan Focus:</strong> Emphasizing independence to protect seniors from early medical dependency.</li>
+          </ul>
+        </div>
+        <div class="interactive-card">
+          <h3><i class="fa-solid fa-heart-pulse"></i> Morbidity & Dementia</h3>
+          <ul>
+            <li><strong>Chronic Diseases:</strong> Hypertension, cardiovascular disorders, stroke, and osteoarthritis.</li>
+            <li><strong>Dementia Cases:</strong> Prevalence rising due to high oldest-old population (Dementia-Friendly Movement).</li>
+            <li><strong>Geriatric Syndromes:</strong> Preventive interventions for frailty and sarcopenia.</li>
+          </ul>
+        </div>
+        <div class="interactive-card">
+          <h3><i class="fa-solid fa-stethoscope"></i> Support Systems (Kaigo Hoken)</h3>
+          <ul>
+            <li><strong>Mandatory Care Insurance:</strong> Launched in 2000 to fund Long-Term Care.</li>
+            <li><strong>Periodic Check-ups (Ningen Dock):</strong> Early metabolic disease detection culture from middle age.</li>
+            <li><strong>Community Integration:</strong> Preventing social isolation (kodokushi) via local environmental support.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU 2: Age Definition & WHO Age Ranges -->
+  <section id="menu2" class="page-section">
+    <div class="section-header">
+      <h2>Definition & Classification of Elderly Age Ranges</h2>
+      <p>Understanding chronological, biological, and functional gerontology boundaries based on World Health Organization (WHO) standards.</p>
+    </div>
+
+    <!-- Interactive Age Checker Tool -->
+    <div class="age-checker-box">
+      <h3><i class="fa-solid fa-calculator" style="color: var(--secondary);"></i> Check Elderly Age Category (WHO)</h3>
+      <p style="font-size: 0.9rem; color: #6C584C; margin-top: 0.3rem;">Enter a person's age to view their official classification:</p>
+      <div class="age-input-group">
+        <input type="number" id="user-age" placeholder="Example: 68" min="1" max="120">
+        <button onclick="checkAgeCategory()">Check</button>
+      </div>
+      <div id="age-result"></div>
+    </div>
+
+    <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem;">
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-book-open"></i> Comprehensive Elderly Definition</h3>
+        <ul>
+          <li><strong>Biological Dimension:</strong> Gradual decline in functional organ reserve capacity (senescence).</li>
+          <li><strong>Psychological Dimension:</strong> Adjustment to social role transitions, retirement, and ego integrity.</li>
+          <li><strong>Sociocultural Dimension:</strong> The elderly's role as guardians of local wisdom or vulnerable groups.</li>
+        </ul>
+      </div>
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-list-ol"></i> Official WHO Classification</h3>
+        <ul>
+          <li><strong>Middle Age:</strong> Ages 45 – 59 years.</li>
+          <li><strong>Elderly:</strong> Ages 60 – 74 years (active young-old).</li>
+          <li><strong>Old:</strong> Ages 75 – 90 years.</li>
+          <li><strong>Very Old:</strong> Above 90 years (oldest-old).</li>
+        </ul>
+      </div>
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-stethoscope"></i> Functional vs. Chronological Limits</h3>
+        <ul>
+          <li><strong>Chronological Age:</strong> Calculated based on birth calendar.</li>
+          <li><strong>Functional Age:</strong> Ability to perform daily activities (ADL & IADL).</li>
+          <li><strong>Fitness Indicators:</strong> Gait speed and grip strength capacity.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU 3: Global Elderly Organizations -->
+  <section id="menu3" class="page-section">
+    <div class="section-header">
+      <h2>Global Organizations Driving Elderly Issues</h2>
+      <p>International agencies shaping macro policies, strategic research, and cross-border long-term care standards.</p>
+    </div>
+
+    <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem;">
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-globe"></i> WHO</h3>
+        <ul>
+          <li><strong>Decade of Healthy Ageing (2021–2030):</strong> Global initiative uniting stakeholders.</li>
+          <li><strong>Age-Friendly Cities:</strong> Guidelines for age-friendly urban environments.</li>
+          <li><strong>ICOPE Guidelines:</strong> Integrated clinical care approach for older adults in primary facilities.</li>
+        </ul>
+      </div>
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-network-wired"></i> IFA</h3>
+        <ul>
+          <li><strong>Global Advocacy:</strong> Combating age discrimination (ageism).</li>
+          <li><strong>International Conferences:</strong> Exchanging clinical innovations and social insurance practices.</li>
+          <li><strong>Vaccination Education:</strong> Campaigns preventing adult infectious diseases.</li>
+        </ul>
+      </div>
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-hands-holding"></i> HelpAge International</h3>
+        <ul>
+          <li><strong>Poverty Alleviation:</strong> Universal pension advocacy.</li>
+          <li><strong>Human Rights Protection:</strong> UN Convention on older persons' rights.</li>
+          <li><strong>Community Empowerment:</strong> Self-help group training.</li>
+        </ul>
+      </div>
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-chart-line"></i> ILC</h3>
+        <ul>
+          <li><strong>Global Alliance:</strong> Analyzing macroeconomic impacts of aging.</li>
+          <li><strong>Workforce Research:</strong> Examining extensions of productive working years.</li>
+          <li><strong>Pension Sustainability:</strong> Long-term fiscal recommendations.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU 4: Global Healthy Ageing & ICOPE Framework + Frailty Calculator -->
+  <section id="menu4" class="page-section">
+    <div class="section-header">
+      <h2>Global Healthy Ageing (WHO) & ICOPE Framework</h2>
+      <p>Decade of healthy ageing strategies, integrated care approaches, and intrinsic capacity screening for older adults</p>
+    </div>
+
+    <div class="icope-grid">
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-earth-europe"></i> UN Decade of Healthy Ageing Program</h3>
+        <p style="margin-bottom: 0.8rem;">The world's population is aging rapidly, with those aged 60 and over projected to surge from 1.1 billion to 1.4 billion. The main challenge is closing the gap between living longer and living healthier.</p>
+        <p style="font-weight: 600; color: var(--primary); margin-top: 0.5rem;">Vision & Slogan:</p>
+        <p style="font-size: 0.95rem;">Creating a world where everyone can live long and healthy lives with the spirit of <em>"adding life to years and years to life"</em>.</p>
+      </div>
+
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-layer-group"></i> Four Strategic Action Areas</h3>
+        <ul>
+          <li><strong>Combating Ageism:</strong> Changing how we think, feel, and act towards age and aging in society.</li>
+          <li><strong>Age-Friendly Environments:</strong> Designing physical and social spaces to keep elderly participation active.</li>
+          <li><strong>Integrated Care:</strong> Aligning primary services to be holistically centered around the individual.</li>
+          <li><strong>Long-Term Care:</strong> Ensuring access to adequate long-term care support.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="interactive-card" style="margin-top: 2rem;">
+      <h3><i class="fa-solid fa-stethoscope"></i> ICOPE Policy & Framework (Integrated Care for Older People)</h3>
+      <p style="margin-bottom: 1rem;">WHO's innovative approach to redirect health services to be person-centered and coordinated at the primary care level, optimizing intrinsic and functional capacity in older adults.</p>
+      
+      <h4 style="color: var(--primary); margin-top: 1.2rem; margin-bottom: 0.5rem; font-size: 1.05rem;"><i class="fa-solid fa-clipboard-list" style="color: var(--secondary);"></i> Six Intrinsic Capacity Domains & Screening Tests:</h4>
+      
+      <div class="icope-table-container">
+        <table class="icope-table">
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Assessed Aspect</th>
+              <th>Quick Screening Test</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Cognition</strong></td>
+              <td>Memory and time/place orientation</td>
+              <td>Impairment noted if incorrect answers are given to either time/place orientation questions or failure to recall three words.</td>
+            </tr>
+            <tr>
+              <td><strong>Mobility (Locomotion)</strong></td>
+              <td>Lower limb strength</td>
+              <td>Chair rise test 5 times without arm support; indication of decline if it takes more than 14 seconds.</td>
+            </tr>
+            <tr>
+              <td><strong>Vitality (Nutrition)</strong></td>
+              <td>Nutritional status & appetite</td>
+              <td>Unintentional weight loss > 3 kg in the last 3 months, or experiencing significant loss of appetite.</td>
+            </tr>
+            <tr>
+              <td><strong>Vision</strong></td>
+              <td>Functional vision impairment</td>
+              <td>Evaluation based on vision problems reported directly by the patient.</td>
+            </tr>
+            <tr>
+              <td><strong>Hearing</strong></td>
+              <td>Sensory hearing impairment</td>
+              <td>Whisper test: failure to repeat two-syllable whispered words indicates hearing decline.</td>
+            </tr>
+            <tr>
+              <td><strong>Psychological</strong></td>
+              <td>Depressive / affective symptoms</td>
+              <td>Two questions regarding the past 2 weeks: feelings of sadness/hopelessness and loss of interest/pleasure in activities.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="calculator-box">
+      <h3><i class="fa-solid fa-calculator" style="color: var(--secondary);"></i> Frailty Risk Assessment Simulation</h3>
+      <p style="font-size: 0.9rem; color: #6C584C; margin-top: 0.3rem; margin-bottom: 1.5rem;">Quick evaluation of elderly intrinsic capacity indicators:</p>
+      
+      <div class="calc-question">
+        <label>1. What is the elderly person's current walking speed?</label>
+        <select id="calc-gait">
+          <option value="1">Very fast and stable (Normal)</option>
+          <option value="2">Moderate / starting to slow down</option>
+          <option value="3">Very slow / requires assistive devices</option>
+        </select>
+      </div>
+
+      <div class="calc-question">
+        <label>2. Has there been unintentional weight loss in the past 3 months?</label>
+        <select id="calc-weight">
+          <option value="1">None (Stable)</option>
+          <option value="2">Slight decrease</option>
+          <option value="3">Significant decrease (>3 kg / loss of appetite)</option>
+        </select>
+      </div>
+
+      <button class="calc-btn" onclick="calculateFrailtyRisk()">Calculate Risk Level</button>
+
+      <div id="calc-result"></div>
+    </div>
+  </section>
+
+  <!-- MENU 5: INDONESIAN INSTITUTIONS & LAWS -->
+  <section id="menu5" class="page-section">
+    <div class="section-header">
+      <h2>Indonesian Institutions & Elderly Welfare Laws</h2>
+      <p>Roles of technical ministries, special legal foundations, national strategies, and cross-sector linkages</p>
+    </div>
+
+    <div class="icope-grid">
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-hospital-user"></i> Role of the Indonesian Ministry of Health</h3>
+        <p>The Ministry of Health is responsible for formulating, establishing, and executing policies in primary and community health, disease control, advanced healthcare, pharmacy, medical devices, and health human resources.</p>
+        <p style="margin-top: 0.8rem;">In elderly care, the Ministry focuses on promotive, preventive, curative, and rehabilitative efforts to address rising chronic disease risks and functional decline. It also provides technical guidance and supervision to local healthcare facilities.</p>
+      </div>
+
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-hands-holding-child"></i> Role of the Indonesian Ministry of Social Affairs</h3>
+        <p>Based on Presidential Regulation No. 110 of 2021, the Ministry of Social Affairs assists the President in governmental affairs within the social sector.</p>
+        <p style="margin-top: 0.8rem;">The Ministry provides social protection and services for vulnerable, neglected, or economically constrained seniors through social rehabilitation, social protection, empowerment, and social assistance programs, positioning seniors as dignified subjects.</p>
+      </div>
+    </div>
+
+    <div class="interactive-card" style="margin-top: 2rem;">
+      <h3><i class="fa-solid fa-scale-balanced"></i> Main Legal Foundations: Law No. 13/1998 & Law No. 17/2023</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+        <div>
+          <h4 style="color: var(--primary); margin-bottom: 0.4rem; font-size: 1rem;"><i class="fa-solid fa-book" style="color: var(--secondary);"></i> Law No. 13 of 1998 on Elderly Welfare</h4>
+          <p style="font-size: 0.95rem;">Serves as the special legal basis distinguishing between <strong>potential elderly</strong> (capable of producing goods/services) and <strong>non-potential elderly</strong> (dependent on others), allowing tailored services.</p>
+        </div>
+        <div>
+          <h4 style="color: var(--primary); margin-bottom: 0.4rem; font-size: 1rem;"><i class="fa-solid fa-notes-medical" style="color: var(--secondary);"></i> Law No. 17 of 2023 on Health</h4>
+          <p style="font-size: 0.95rem;">Regulates public rights including seniors to receive comprehensive health services (promotive, preventive, curative, rehabilitative) and affirms shared responsibilities between central and regional governments.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="interactive-card" style="margin-top: 2rem;">
+      <h3><i class="fa-solid fa-network-wired"></i> National Strategy on Aging & Sector Integration</h3>
+      <p style="margin-bottom: 0.8rem;"><strong>Presidential Regulation No. 88 of 2021 on National Strategy on Aging:</strong> Regulates cross-sector coordination to build independent, prosperous, and dignified seniors through enhanced social protection, age-friendly environments, and institutional strengthening.</p>
+      <p><strong>Institutional Linkages:</strong> Elderly issues are multidimensional. The Ministry of Health handles medical aspects, while the Ministry of Social Affairs manages social and empowerment aspects. Cross-sector integration ensures holistic protection for seniors.</p>
+    </div>
+  </section>
+
+  <!-- MENU 6: HEALTHY AGEING & LONG-TERM CARE PROGRAMS IN INDONESIA -->
+  <section id="menu6" class="page-section">
+    <div class="section-header">
+      <h2>Healthy Ageing & Long-Term Care Programs in Indonesia</h2>
+      <p>National primary healthcare initiatives, community empowerment, and long-term care (LTC) systems</p>
+    </div>
+
+    <div class="interactive-card">
+      <h3><i class="fa-solid fa-shield-heart"></i> Introduction to Healthy Ageing Programs in Indonesia</h3>
+      <p>Healthy Ageing programs in Indonesia represent a continuum of efforts to maintain health, functional capacity, independence, and quality of life for older adults. Implementation spans early detection, health services, family empowerment, elderly education, up to long-term care.</p>
+      <p style="margin-top: 0.8rem;">A foundational framework is Primary Health Services Integration (ILP). Through ILP, primary healthcare is brought closer to communities and delivered across the life-course.</p>
+    </div>
+
+    <div class="icope-grid" style="margin-top: 2rem;">
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-arrows-split-up-and-left"></i> Primary Health Services Integration (ILP)</h3>
+        <p>A healthcare service approach integrating life-course care, including elderly services via Puskesmas, auxiliary health posts (Pustu), integrated health posts (Posyandu), cadres, and home visits.</p>
+        <p style="margin-top: 0.8rem;">Emphasizes promotive, preventive, screening, treatment, rehabilitation, and follow-up care so conditions are detected early.</p>
+      </div>
+
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-stethoscope"></i> Simple Elderly Health Screening (SKILAS)</h3>
+        <p>Simple screening to detect health issues and functional declines early before worsening.</p>
+        <p style="margin-top: 0.8rem;">Covers cognitive function, mobility, nutritional status, vision, hearing, and mental conditions for clinical referral.</p>
+      </div>
+
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-hospital-user"></i> Age-Friendly Community Health Center (Puskesmas Santun Lansia)</h3>
+        <p>Puskesmas service approach addressing specific elderly needs and characteristics to sustain independence.</p>
+        <p style="margin-top: 0.8rem;">Encompasses promotive, preventive, curative, rehabilitative, counseling, education, and home visits upholding friendly, accessible principles.</p>
+      </div>
+
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-people-roof"></i> Elderly Family Development (Bina Keluarga Lansia / BKL)</h3>
+        <p>Family empowerment program aiming to enhance family capacity in caring for, accompanying, and meeting elderly needs.</p>
+        <p style="margin-top: 0.8rem;">Fosters the <strong>Resilient Elderly</strong> concept (seven dimensions: spiritual, physical, emotional, intellectual, social, vocational, and environmental).</p>
+      </div>
+    </div>
+
+    <div class="interactive-card" style="margin-top: 2rem;">
+      <h3><i class="fa-solid fa-graduation-cap"></i> Elderly School (Sekolah Lansia)</h3>
+      <p style="margin-bottom: 0.8rem;">Non-formal education activity aimed at seniors and pre-seniors to boost knowledge, skills, health, independence, and social activity.</p>
+      <p>Curriculum covers physical-mental health, healthy lifestyles, disease prevention, physical activity, nutrition, social ties, and productivity supporting the <strong>SMART Elderly</strong> concept (Healthy, Independent, Active, Productive, and Dignified).</p>
+    </div>
+
+    <div class="interactive-card" style="margin-top: 2rem;">
+      <h3><i class="fa-solid fa-house-medical-circle-check"></i> Long-Term Care (LTC) Implementation Schemes in Indonesia</h3>
+      <p style="margin-bottom: 1.5rem;">Select a tab below to view details on long-term care delivery models:</p>
+      
+      <div class="ltc-tabs">
+        <button class="ltc-tab-btn active-ltc" onclick="switchLTCTab(event, 'ltc-keluarga')">1. Family Care</button>
+        <button class="ltc-tab-btn" onclick="switchLTCTab(event, 'ltc-posyandu')">2. Elderly Posyandu</button>
+        <button class="ltc-tab-btn" onclick="switchLTCTab(event, 'ltc-homecare')">3. Home Care Practice</button>
+        <button class="ltc-tab-btn" onclick="switchLTCTab(event, 'ltc-panti')">4. Social Care / Nursing Home</button>
+      </div>
+
+      <div id="ltc-keluarga" class="ltc-panel active-panel">
+        <h4 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fa-solid fa-house-chimney-user" style="color: var(--secondary);"></i> Family-Based Care</h4>
+        <p>Provided at home by family members as primary caregivers (assisting with ADLs, medication, nutrition). Offers comfort in a familiar environment but requires education and respite support to prevent caregiver burnout.</p>
+      </div>
+
+      <div id="ltc-posyandu" class="ltc-panel">
+        <h4 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fa-solid fa-users" style="color: var(--secondary);"></i> Elderly Posyandu / Community Care</h4>
+        <p>Community-based healthcare integrated with ILP, bringing risk factor screening, health monitoring, and social interaction closer to maintain mental fitness.</p>
+      </div>
+
+      <div id="ltc-homecare" class="ltc-panel">
+        <h4 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fa-solid fa-user-nurse" style="color: var(--secondary);"></i> Home Care Practice</h4>
+        <p>Direct home services by health professionals or trained caregivers for nutrition monitoring, wound care, therapy, and medication compliance for high mobility-limited seniors.</p>
+      </div>
+
+      <div id="ltc-panti" class="ltc-panel">
+        <h4 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fa-solid fa-building-shield" style="color: var(--secondary);"></i> Social Institutions / Nursing Homes</h4>
+        <p>Institution-based LTC providing accommodation and intensive services for neglected seniors or those lacking adequate family support, including mental, spiritual, and comprehensive healthcare.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU 7: JAPAN INSTITUTIONS & HEALTHY AGEING PROGRAMS -->
+  <section id="menu7" class="page-section">
+    <div class="section-header">
+      <h2>Japan's Institutions & Healthy Ageing Programs</h2>
+      <p>Multisectoral approaches, legal frameworks, and strategic ministerial innovations for a healthy longevity society</p>
+    </div>
+
+    <div class="interactive-card" style="border-left: 6px solid var(--primary); margin-bottom: 2.5rem; background: linear-gradient(135deg, #ffffff 80%, var(--accent-light) 100%);">
+      <h3><i class="fa-solid fa-landmark"></i> Legal Framework & Macro Coordination (Cabinet Office)</h3>
+      <p>Healthy ageing implementation in Japan is backed by multisectoral legal and policy frameworks. The cornerstone is the <strong>Basic Law on Measures for the Aging Society</strong> (Kōrei Shakai Taisaku Kihon-hō) enacted by the Japanese Parliament (Kokkai) in 1995. Under this framework, the <strong>Cabinet Office</strong> (Naikaku-fu) plays a central role in coordinating cross-sector policies to guarantee integrated elderly welfare.</p>
+    </div>
+
+    <div class="interactive-card" style="margin-bottom: 2.5rem;">
+      <h3><i class="fa-solid fa-notes-medical"></i> Ministry of Health, Labour and Welfare (MHLW / Kōsei Rōdō-shō)</h3>
+      <p style="margin-bottom: 1.2rem;">The primary agency responsible for healthcare, social welfare, long-term care, care prevention, social security systems, and promoting elderly independence.</p>
+      
+      <div style="background: var(--accent-light); padding: 1.5rem; border-radius: 12px; border: 1px dashed var(--secondary); margin-top: 1rem;">
+        <h4 style="color: var(--primary); margin-bottom: 0.8rem; font-size: 1.05rem;"><i class="fa-solid fa-bullseye"></i> Flagship Policy: 健康日本21（第三次) / Kenkō Nihon 21 – 3rd Term</h4>
+        <p style="font-size: 0.95rem; margin-bottom: 1rem;">Enacted by MHLW on May 31, 2023 for the 2024–2035 period, aiming to extend healthy life expectancy (<em>kenkō jumyō</em>) and reduce health disparities through three implementation pillars:</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+          <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(212,163,115,0.3);">
+            <strong style="color: var(--primary); display: block; margin-bottom: 0.3rem;"><i class="fa-solid fa-bowl-food" style="color: var(--secondary);"></i> Dietary Improvement</strong>
+            <span style="font-size: 0.9rem;">The *Shokuseikatsu Kaizen Fukyū Undō* movement focusing on adding 1 serving of vegetables and fruit daily by 2026.</span>
+          </div>
+          <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(212,163,115,0.3);">
+            <strong style="color: var(--primary); display: block; margin-bottom: 0.3rem;"><i class="fa-solid fa-clipboard-user" style="color: var(--secondary);"></i> Tokutei Kenshin Screening</strong>
+            <span style="font-size: 0.9rem;">Risk factor check for ages 40–74. At-risk participants receive lifestyle guidance (*Tokutei Hoken Shidō*) integrated with health insurance.</span>
+          </div>
+          <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(212,163,115,0.3);">
+            <strong style="color: var(--primary); display: block; margin-bottom: 0.3rem;"><i class="fa-solid fa-bed" style="color: var(--secondary);"></i> 2023 Sleep Guidelines</strong>
+            <span style="font-size: 0.9rem;">Recommendations for seniors to avoid excessive bed rest, maintain daytime activity, and improve sleep habits.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem;">
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-city"></i> Ministry of Land, Infrastructure, Transport and Tourism (MLIT)</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">Supports safe physical environments, transportation, housing, and age-friendly public facilities.</p>
+        <hr style="border: 0; border-top: 1px solid rgba(212,163,115,0.3); margin: 0.8rem 0;">
+        <p style="font-size: 0.9rem;"><strong>Key Program (*Baria Furī Kihon Kōsō*):</strong> Integrated district planning (stations, sidewalks, public facilities) involving direct participation of seniors and disabled individuals (e.g., in Miyajima-guchi, Hatsukaichi City).</p>
+      </div>
+
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-graduation-cap"></i> Ministry of Education, Culture, Sports, Science and Technology (MEXT)</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">Supports mental, social health, and lifelong learning opportunities for active seniors.</p>
+        <hr style="border: 0; border-top: 1px solid rgba(212,163,115,0.3); margin: 0.8rem 0;">
+        <p style="font-size: 0.9rem;"><strong>Three Main Slogans:</strong><br>
+        1. <em>Shōgai Gakushū</em> (Lifelong Learning)<br>
+        2. <em>Shōgai Supōtsu</em> (Lifelong Sports)<br>
+        3. <em>Shakai Kyōiku</em> (Social Education)</p>
+      </div>
+
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-robot"></i> Ministry of Economy, Trade and Industry (METI)</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">Promotes technology, robotic innovations, and assistive devices for elderly independence.</p>
+        <hr style="border: 0; border-top: 1px solid rgba(212,163,115,0.3); margin: 0.8rem 0;">
+        <p style="font-size: 0.9rem;"><strong>Innovative Technology Examples:</strong><br>
+        • <strong>RT-3:</strong> Robotic intelligent walking aid with electric motors and automatic brakes.<br>
+        • <strong>HAL for Care:</strong> Bio-electric skin signal reading robot for muscle rehabilitation.<br>
+        • <strong>Navigation Toilet:</strong> Predictive micturition timing sensor.</p>
+      </div>
+
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-wifi"></i> Ministry of Internal Affairs and Communications (MIC)</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">Focuses on communications and digital inclusion so seniors do not lag behind in information access.</p>
+        <hr style="border: 0; border-top: 1px solid rgba(212,163,115,0.3); margin: 0.8rem 0;">
+        <p style="font-size: 0.9rem;"><strong>Key Program:</strong> <em>Dejitaru Katsuyō Shien Suishin Jigyō</em>. Smartphone training and consultation for seniors to access online services, running across 6,000 locations since 2021.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU 8: LONG-TERM CARE INSURANCE (KAIGO HOKEN) IN JAPAN -->
+  <section id="menu8" class="page-section">
+    <div class="section-header">
+      <h2>Long-Term Care Insurance System (Kaigo Hoken) in Japan</h2>
+      <p>Social security long-term care insurance system, beneficiary classifications, care levels, and joint financing</p>
+    </div>
+
+    <div class="interactive-card" style="border-left: 6px solid var(--primary); margin-bottom: 2.5rem; background: linear-gradient(135deg, #ffffff 80%, var(--accent-light) 100%);">
+      <h3><i class="fa-solid fa-file-shield"></i> Introduction to Kaigo Hoken (介護保険)</h3>
+      <p>Japan has a high proportion of older adults, leading to continuous growth in long-term care (LTC) needs. Japan implemented <strong>Long-Term Care Insurance (LTCI)</strong> or <strong>Kaigo Hoken</strong> in 2000 as a social security system to provide care access when physical or cognitive abilities decline and assistance with daily activities is required.</p>
+      <p style="margin-top: 0.8rem;">Kaigo Hoken reduces elderly reliance on families by sharing responsibilities among individuals, governments, municipalities, and society. Municipalities act as insurers managing enrollment, premiums, care needs certification, and provider payments, while the central government and prefectures support financing and system regulation.</p>
+    </div>
+
+    <div class="interactive-card" style="margin-bottom: 2.5rem;">
+      <h3><i class="fa-solid fa-users-rectangle"></i> Kaigo Hoken Beneficiary Categories</h3>
+      <p style="margin-bottom: 1rem;">Participants are divided into two main categories based on age groups:</p>
+      <div class="icope-table-container">
+        <table class="icope-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Provisions & Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Category 1</strong></td>
+              <td>Residents aged <strong>65 and older</strong>. Benefits are granted following assessment and certification of support or care needs.</td>
+            </tr>
+            <tr>
+              <td><strong>Category 2</strong></td>
+              <td>Residents aged <strong>40–64 years</strong>. Benefits are granted if care needs relate to specific aging-associated diseases.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 0.9rem; color: #5C4B47; margin-top: 1rem;">Beneficiaries undergo <em>care-needs certification</em> involving physical and mental condition evaluations considering physician opinions. Provided services include home-visit care, home-visit nursing, day care, rehabilitation, short-stay, and facility care services.</p>
+    </div>
+
+    <div class="interactive-card" style="margin-bottom: 2.5rem;">
+      <h3><i class="fa-solid fa-layer-group"></i> Care Levels (Yōshien & Yōkaigo)</h3>
+      <p style="margin-bottom: 1rem;">Care levels match services to dependency degrees. <strong>Support Levels (Yōshien)</strong> apply to individuals still relatively capable of daily activities but needing preventive support, while <strong>Care Levels (Yōkaigo)</strong> apply to individuals requiring assistance due to limitations in daily living activities.</p>
+      
+      <div class="icope-table-container">
+        <table class="icope-table">
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Care Need Overview & Monthly Benefit Limits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Support 1 & 2</strong></td>
+              <td>Light support and preventive services to prevent further functional decline.</td>
+            </tr>
+            <tr>
+              <td><strong>Care Level 1</strong></td>
+              <td>Assistance with partial activities, maintaining some independence. (Benefit limit approx. ¥167,650)</td>
+            </tr>
+            <tr>
+              <td><strong>Care Level 2</strong></td>
+              <td>More frequent assistance in daily activities. (Benefit limit approx. ¥197,050)</td>
+            </tr>
+            <tr>
+              <td><strong>Care Level 3</strong></td>
+              <td>Greater limitations requiring intensive care. (Benefit limit approx. ¥270,480)</td>
+            </tr>
+            <tr>
+              <td><strong>Care Level 4</strong></td>
+              <td>High dependency on others' assistance. (Benefit limit approx. ¥309,380)</td>
+            </tr>
+            <tr>
+              <td><strong>Care Level 5</strong></td>
+              <td>Highest care needs and intensive assistance across multiple activities. (Benefit limit approx. ¥362,170)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 0.9rem; color: #5C4B47; margin-top: 1rem;">*Note: The figures above represent maximum service benefit limits, not direct cash payouts to users.</p>
+    </div>
+
+    <div class="interactive-card">
+      <h3><i class="fa-solid fa-hand-holding-dollar"></i> Kaigo Hoken Financing Structure</h3>
+      <p style="margin-bottom: 1rem;">Kaigo Hoken utilizes joint financing from insurance premiums and public funds, with a general split of ~50% from premiums and ~50% from central and regional public funds.</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+        <div style="background: var(--accent-light); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--secondary);">
+          <h4 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 1.05rem;"><i class="fa-solid fa-coins"></i> Premium Sources (50%)</h4>
+          <ul style="font-size: 0.95rem; padding-left: 1.2rem;">
+            <li><strong>Category 1 Participants (≥65 yrs):</strong> Contributes ~23% (divided into 13 tiers based on economic capacity).</li>
+            <li><strong>Category 2 Participants (40–64 yrs):</strong> Contributes ~27% (deducted through workers' health insurance).</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--accent-light); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--secondary);">
+          <h4 style="color: var(--primary); margin-bottom: 0.5rem; font-size: 1.05rem;"><i class="fa-solid fa-building-columns"></i> Public / Government Funds (50%)</h4>
+          <ul style="font-size: 0.95rem; padding-left: 1.2rem;">
+            <li><strong>Central / National Government:</strong> ~25%</li>
+            <li><strong>Prefectural Governments:</strong> ~12.5%</li>
+            <li><strong>Municipal Governments:</strong> ~12.5%</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="font-size: 0.95rem; margin-top: 1.5rem;">In addition to premiums and public funds, service users pay a copayment generally set at 10% of service costs (while high-income individuals may pay 20% or 30%). This mechanism ensures equitable and sustainable social protection.</p>
+    </div>
+  </section>
+
+  <!-- MENU 9: JAPAN'S TECHNOLOGY IN LONG-TERM CARE & HEALTHY AGEING -->
+  <section id="menu9" class="page-section">
+    <div class="section-header">
+      <h2>Japan's Technology in Long-Term Care and Healthy Ageing</h2>
+      <p>Strategic roles of care robotics, smart sensors, and telehealth in supporting elderly functional independence and care sustainability</p>
+    </div>
+
+    <div class="interactive-card" style="border-left: 6px solid var(--primary); margin-bottom: 2.5rem; background: linear-gradient(135deg, #ffffff 80%, var(--accent-light) 100%);">
+      <h3><i class="fa-solid fa-microchip"></i> Technological Perspective in Long-Term Care & Healthy Ageing</h3>
+      <p>Japan is among the nations facing surging needs for long-term care (LTC) due to a high elderly population. This condition drives the Japanese government to develop diverse technologies to assist care services while sustaining elderly independence.</p>
+      <p style="margin-top: 0.8rem;">Within the Healthy Ageing perspective, technology is utilized not only when seniors experience dependency, but also to maintain functional capacity, prevent health risks, and enable seniors to live independently as long as possible. WHO defines Healthy Ageing as the process of developing and maintaining functional ability enabling well-being in older age, emphasizing that technology helps maintain or enhance functional capacity to postpone intensive LTC needs.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; margin-bottom: 2.5rem;">
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-robot"></i> Care Robotics in Long-Term Care</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">Use of robots or tech-based devices to assist elderly care activities. The Japanese government via MHLW and METI expanded care tech priority fields into 9 fields and 16 technology types (covering transfer, mobility, elimination, monitoring, bathing, caregiver support, functional training, nutrition, and dementia support).</p>
+        <hr style="border: 0; border-top: 1px solid rgba(212,163,115,0.3); margin: 0.8rem 0;">
+        <p style="font-size: 0.9rem;"><strong>Main Function:</strong> Alleviating heavy physical burdens on caregivers (e.g., transferring seniors) and assisting seniors directly via mobility devices. Aims to reduce physical strain while boosting safety and independence.</p>
+      </div>
+
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-video"></i> Smart Sensors and Monitoring Systems</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">Sensor technology to monitor elderly conditions and activities in real-time, in care facilities and homes alike.</p>
+        <hr style="border: 0; border-top: 1px solid rgba(212,163,115,0.3); margin: 0.8rem 0;">
+        <p style="font-size: 0.9rem;"><strong>Main Function:</strong> Detecting movements, fall risks, or physical condition changes early so caregivers receive prompt alerts. Helps seniors live safely at home while delaying formal or informal LTC needs. Implementation must uphold data privacy and security.</p>
+      </div>
+
+      <div class="interactive-card">
+        <h3><i class="fa-solid fa-laptop-medical"></i> Telehealth and Healthcare Access</h3>
+        <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">Remote healthcare services (*online medical care*) enabling patients to consult doctors digitally without always visiting clinics.</p>
+        <hr style="border: 0; border-top: 1px solid rgba(212,163,115,0.3); margin: 0.8rem 0;">
+        <p style="font-size: 0.9rem;"><strong>Main Function:</strong> Supporting *ageing in place* safely for seniors with mobility limitations or chronic conditions, combined with face-to-face visits per clinical needs.</p>
+      </div>
+    </div>
+
+    <div class="interactive-card">
+      <h3><i class="fa-solid fa-table-cells"></i> Comparative Analysis of Technology's Role in Healthy Ageing</h3>
+      <p style="margin-bottom: 1rem;">Summary of functions and direct linkages of Japanese technology in supporting LTC and Healthy Ageing systems:</p>
+      
+      <div class="icope-table-container">
+        <table class="icope-table">
+          <thead>
+            <tr>
+              <th>Technology</th>
+              <th>Role in Long-Term Care (LTC)</th>
+              <th>Linkage to Healthy Ageing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Care robotics</strong></td>
+              <td>Assisting mobility, transfer, and care activities</td>
+              <td>Sustaining independence and physical capability</td>
+            </tr>
+            <tr>
+              <td><strong>Smart sensors</strong></td>
+              <td>Activity monitoring and risk detection</td>
+              <td>Enhancing safety and enabling early detection</td>
+            </tr>
+            <tr>
+              <td><strong>Telehealth</strong></td>
+              <td>Simplifying consultation and health monitoring</td>
+              <td>Supporting service access and *ageing in place*</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 0.9rem; color: #5C4B47; margin-top: 1rem;">Japan's approach proves that the most effective technology is human-centered, where innovation reinforces caregiver roles and preserves social and interpersonal interactions rather than replacing them.</p>
+    </div>
+  </section>
+
+  <!-- MENU 10: COMPARATIVE FEASIBILITY & LTC CONSTRAINT STRATEGIES (TOGGLE ACCORDION) -->
+  <section id="menu10" class="page-section">
+    <div class="section-header">
+      <h2>LTC Technology Adoption Feasibility & Constraint Strategies</h2>
+      <p>Click each section below to explore adoption prospects, challenges, and ILP-based strategies</p>
+    </div>
+
+    <!-- Toggle Item 1 (Shortened) -->
+    <div class="toggle-header" onclick="toggleSection('sec1')">
+      <span><i class="fa-solid fa-scale-balanced" style="margin-right: 8px;"></i> 1. Comparative Prospects & Feasibility</span>
+      <i class="fa-solid fa-chevron-down" id="icon-sec1"></i>
+    </div>
+    <div id="sec1" class="toggle-content">
+      <p style="margin-bottom: 0.8rem;">Japan successfully utilizes care technology (robotics, sensors, ICT) to overcome labor shortages and sustain elderly independence. Indonesia holds strong potential for adoption through Primary Health Services Integration (ILP) and the SATUSEHAT digital ecosystem.</p>
+      <p>Rather than replicating Japan's entire complex model, Indonesia should selectively adopt cost-effective solutions: telehealth, vital sign tracking, basic safety sensors, and digital health records.</p>
+    </div>
+
+    <!-- Toggle Item 2 (Complete) -->
+    <div class="toggle-header" onclick="toggleSection('sec2')">
+      <span><i class="fa-solid fa-triangle-exclamation" style="margin-right: 8px;"></i> 2. Main Challenges & Obstacles</span>
+      <i class="fa-solid fa-chevron-down" id="icon-sec2"></i>
+    </div>
+    <div id="sec2" class="toggle-content">
+      <div style="margin-bottom: 1.5rem;">
+        <h4 style="color: var(--primary); margin-bottom: 0.4rem; font-size: 1.05rem;"><i class="fa-solid fa-user-xmark" style="color: var(--secondary);"></i> First Constraint: Digital Literacy</h4>
+        <p>Digital literacy remains a barrier among seniors, health cadres, and families. Seniors may struggle with using apps, authentication, reading small displays, or understanding digital instructions. Systematic reviews on telehealth find technical literacy to be among the most frequently reported barriers, while assistive tech reviews highlight usability and lack of knowledge as major hurdles.</p>
+        <p style="margin-top: 0.6rem; background: var(--accent-light); padding: 0.9rem 1.1rem; border-radius: 8px; border-left: 3px solid var(--secondary);">
+          💡 <strong>Solution:</strong> Implementing a <strong>'digital-assisted care'</strong> model, where technology does not require seniors to be fully independent users. Posyandu cadres, families, or Puskesmas personnel act as digital assistants to measure parameters, input results into the system, and identify seniors needing follow-up care, preserving face-to-face interaction while leveraging digital records.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h4 style="color: var(--primary); margin-bottom: 0.4rem; font-size: 1.05rem;"><i class="fa-solid fa-wallet" style="color: var(--secondary);"></i> Second Constraint: Procurement Costs, Maintenance, and Connectivity</h4>
+        <p>Procurement, device maintenance, and connectivity costs pose significant challenges. Japan's experience shows advanced technology requires major investment and upkeep, whereas Indonesia still faces regional disparities in digital readiness influenced by internet access, HR capacity, and budgets.</p>
+        <p style="margin-top: 0.6rem; background: var(--accent-light); padding: 0.9rem 1.1rem; border-radius: 8px; border-left: 3px solid var(--secondary);">
+          💡 <strong>Solution:</strong> Adoption should not begin with expensive robotics, but with high cost-benefit ratio technologies, such as basic monitoring devices, shared tablets at Posyandu, facility internet connections, and integrated recording systems.
+        </p>
+      </div>
+
+      <div>
+        <h4 style="color: var(--primary); margin-bottom: 0.4rem; font-size: 1.05rem;"><i class="fa-solid fa-network-wired" style="color: var(--secondary);"></i> Third Constraint: Network Disparities and System Interoperability</h4>
+        <p>LTC digitization is less effective if data from Posyandu, Puskesmas, hospitals, and social services cannot be exchanged. SATUSEHAT was developed as an exchange ecosystem connecting various systems and health facilities, though regional implementation still faces infrastructure and resource variations.</p>
+        <p style="margin-top: 0.6rem; background: var(--accent-light); padding: 0.9rem 1.1rem; border-radius: 8px; border-left: 3px solid var(--secondary);">
+          💡 <strong>Solution:</strong> Applying interoperability principles and avoiding the creation of excessive standalone applications.
+        </p>
+      </div>
+    </div>
+
+    <!-- Toggle Item 3 (Complete) -->
+    <div class="toggle-header" onclick="toggleSection('sec3')">
+      <span><i class="fa-solid fa-lightbulb" style="margin-right: 8px;"></i> 3. Flexible Solutions & ILP-Based Strategies</span>
+      <i class="fa-solid fa-chevron-down" id="icon-sec3"></i>
+    </div>
+    <div id="sec3" class="toggle-content">
+      <p style="margin-bottom: 1rem;">Flexible implementation strategies can be structured in four phased steps:</p>
+      
+      <ul style="padding-left: 1.2rem; margin-bottom: 1.5rem; font-size: 0.95rem;">
+        <li style="margin-bottom: 0.5rem;"><strong>Stage One:</strong> Strengthening infrastructure and digital literacy at Puskesmas.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>Stage Two:</strong> Developing Posyandu ILP as a technology-assisted elderly monitoring node.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>Stage Three:</strong> Connecting monitoring results with Puskesmas for follow-up and clinical referrals.</li>
+        <li><strong>Stage Four:</strong> Expanding telemonitoring, home sensors, or rehabilitation technologies based on heightened readiness.</li>
+      </ul>
+
+      <p style="font-size: 0.95rem; color: var(--primary); font-weight: 600; background: var(--accent-light); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--secondary); text-align: center;">
+        ✨ <em>Conclusion:</em> Adopting Japan's LTC technology in Indonesia is best achieved through phased adaptation rather than direct technology transfer. Puskesmas serve as clinical and data coordination hubs, while Posyandu ILP acts as a community network for screening, monitoring, education, and early detection. This approach preserves technology benefits—efficiency, data continuity, and remote monitoring—without sacrificing human-centered care at the core of elderly services.
+      </p>
+    </div>
+  </section>
+
+  <!-- MENU 11: TRANSCRIPTION REFLECTION (NEW MENU) -->
+  <section id="menu11" class="page-section">
+    <div class="section-header">
+      <h2>Transcultural Nursing Reflection</h2>
+      <p>Reflecting on transcultural nursing, family roles, formal support systems, and future global nursing competencies</p>
+    </div>
+
+    <div class="interactive-card">
+      <h3><i class="fa-solid fa-book-bookmark"></i> Reflection on Transcultural Nursing</h3>
+      <p style="margin-bottom: 1rem;">
+        Elderly care is closely intertwined with culture, family values such as <em>filial piety</em>, and health policy systems. While families serve as the primary pillar of physical and emotional support, the complexity of long-term care (LTC) needs among older adults cannot be solely burdened onto families.
+      </p>
+      <p style="margin-bottom: 1rem;">
+        From a <em>Transcultural Nursing</em> perspective, nurses must be able to respect cultural values without neglecting the reality of family capacities. This highlights the importance of formal systems (such as service integration models and insurance schemes like those in Japan) which exist not to replace the family's role, but to complement and strengthen the continuity of safe care.
+      </p>
+      <p>
+        Moving forward, global nurses are expected to possess cross-cultural competence, digital literacy, and strong cross-sector collaboration. The utilization of technologies such as robotics and smart sensors must be positioned as a support for efficiency and safety, without ever removing the essence of interpersonal relationships (*human-centered care*) which remains the core of nursing service.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 TransCultural Ageing Hub. Transcultural Nursing Education Platform.</p>
+  </footer>
+
+  <!-- JavaScript Interaktif -->
+  <script>
+    // Tab Switching Logic
+    function switchTab(event, menuId) {
+      event.preventDefault();
+      
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      
+      document.getElementById(menuId).classList.add('active');
+      event.currentTarget.classList.add('active');
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Country Tab Switcher (Menu 1)
+    function switchCountryTab(event, panelId) {
+      document.querySelectorAll('.country-panel').forEach(panel => panel.classList.remove('active-panel'));
+      document.querySelectorAll('.country-tab-btn').forEach(btn => btn.classList.remove('active-country'));
+      
+      document.getElementById(panelId).classList.add('active-panel');
+      event.currentTarget.classList.add('active-country');
+    }
+
+    // LTC Tab Switcher (Menu 6)
+    function switchLTCTab(event, panelId) {
+      document.querySelectorAll('.ltc-panel').forEach(panel => panel.classList.remove('active-panel'));
+      document.querySelectorAll('.ltc-tab-btn').forEach(btn => btn.classList.remove('active-ltc'));
+      
+      document.getElementById(panelId).classList.add('active-panel');
+      event.currentTarget.classList.add('active-ltc');
+    }
+
+    // Toggle / Click-to-Show Accordion Logic (Menu 10)
+    function toggleSection(secId) {
+      const content = document.getElementById(secId);
+      const icon = document.getElementById('icon-' + secId);
+      
+      if (content.classList.contains('show')) {
+        content.classList.remove('show');
+        icon.style.transform = "rotate(0deg)";
+      } else {
+        content.classList.add('show');
+        icon.style.transform = "rotate(180deg)";
+      }
+    }
+
+    // QR Code Dropdown Toggle
+    function toggleQRPopup(forceState) {
+      const card = document.getElementById('qr-card');
+      if (forceState !== undefined) {
+        if (forceState) card.classList.add('show');
+        else card.classList.remove('show');
+      } else {
+        card.classList.toggle('show');
+      }
+    }
+
+    // Interactive Age Category Checker (WHO Standards)
+    function checkAgeCategory() {
+      const ageInput = document.getElementById('user-age').value;
+      const resultDiv = id => document.getElementById(id);
+      
+      if(!ageInput || ageInput <= 0) {
+        resultDiv('age-result').innerHTML = "⚠️ Please enter a valid age number.";
+        return;
+      }
+
+      let age = parseInt(ageInput);
+      let category = "";
+      let description = "";
+
+      if (age < 45) {
+        category = "Young / Adult Age";
+        description = "Not yet classified as elderly gerontology under WHO standards.";
+      } else if (age >= 45 && age <= 59) {
+        category = "Middle Age";
+        description = "Transition phase toward old age, important to initiate preventive health measures.";
+      } else if (age >= 60 && age <= 74) {
+        category = "Elderly";
+        description = "Early elderly category per WHO. Focus on maintaining functional independence.";
+      } else if (age >= 75 && age <= 90) {
+        category = "Old";
+        description = "Requires special attention regarding chronic support and social engagement.";
+      } else {
+        category = "Very Old (Oldest-Old)";
+        description = "Requires intensive Long-Term Care (LTC) support.";
+      }
+
+      resultDiv('age-result').innerHTML = `📌 <strong>${category}</strong><br><span style="font-size: 0.9rem; font-weight: 400; color: #5C4B47;">${description}</span>`;
+    }
+
+    // Interactive Frailty Risk Calculator (Menu 4)
+    function calculateFrailtyRisk() {
+      const gait = parseInt(document.getElementById('calc-gait').value);
+      const weight = parseInt(document.getElementById('calc-weight').value);
+      const totalScore = gait + weight;
+      const resBox = document.getElementById('calc-result');
+
+      resBox.style.display = "block";
+
+      if (totalScore <= 2) {
+        resBox.innerHTML = "🟢 <strong>Low Risk (Robust):</strong> Good intrinsic capacity. Maintain regular physical activity and balanced nutrition.";
+      } else if (totalScore === 3 || totalScore === 4) {
+        resBox.innerHTML = "🟡 <strong>Moderate Risk (Pre-Frail):</strong> Emerging signs of functional decline. Muscle strength training and nutritional screening advised.";
+      } else {
+        resBox.innerHTML = "🔴 <strong>High Risk (Frail):</strong> High vulnerability to falls and functional decline. Consulting a gerontological nurse or clinician is strongly recommended.";
+      }
+    }
+
+    // AI Global Companion Smart Knowledge Base
+    let currentLang = 'en';
+    
+    const aiGreetings = {
+      'id': "Halo! Tanyakan tentang perbandingan lansia secara global, program Kaigo Hoken, atau Teknologi LTC di Jepang!",
+      'jp': "こんにちは！世界、介護保険制度、そして日本の介護テクノロジーに関する情報をお答えします。",
+      'de': "Guten Tag! Fragen Sie nach der globalen Situation, Kaigo Hoken oder japanischen LTC-Technologien!",
+      'en': "Hello! Ask me about global elderly trends, Kaigo Hoken, or Japan's LTC technologies!"
+    };
+
+    const knowledgeBase = {
+      'id': {
+        keywords: ['indonesia', 'jepang', 'japan', 'global', 'kaigo hoken', 'robotics', 'sensor', 'telehealth', 'teknologi'],
+        responses: {
+          'indonesia': "🇮🇩 Indonesia: Jumlah lansia mencapai lebih dari 30 juta jiwa dengan program Healthy Ageing (ILP, SKILAS) dan skema Long-Term Care.",
+          'kaigo hoken': "🇯🇵 Kaigo Hoken: Asuransi perawatan jangka panjang di Jepang sejak tahun 2000 untuk kategori 1 (≥65 tahun) dan kategori 2 (40–64 tahun).",
+          'teknologi': "🤖 Teknologi Jepang: Meliputi care robotics (membantu mobilitas/perawatan), smart sensors (deteksi dini & keselamatan), serta telehealth (akses kesehatan jarak jauh).",
+          'jepang': "🇯🇵 Jepang: Memiliki sistem asuransi Kaigo Hoken serta inovasi teknologi human-centered untuk mendukung Healthy Ageing.",
+          'global': "🌍 Secara global, populasi lansia (60+) diproyeksikan mencapai 2,1 miliar pada 2050.",
+          'default': "🌍 Platform ini mengkaji tren global, kondisi di Indonesia, profil Jepang, program Kaigo Hoken, hingga teknologi LTC di Jepang."
+        }
+      },
+      'jp': {
+        keywords: ['indonesia', 'japan', '日本', 'global', '世界', '介護保険', 'ロボット'],
+        responses: {
+          'indonesia': "🇮🇩 インドネシア：高齢化が進む中、ILPやSKILASなどの健康長寿プログラムが展開されています。",
+          'japan': "🇯🇵 日本：介護保険制度（Kaigo Hoken）やケアロボット、センサー、テレヘルスなどの先進的な介護テクノロジーが活用されています。",
+          'global': "🌍 世界：2050年までに60歳以上の人口が21億人に達すると予測されています。",
+          'default': "🌍 グローバル、インドネシア、日本の介護テクノロジーや高齢化に関する情報をお尋ねください。"
+        }
+      },
+      'de': {
+        keywords: ['indonesien', 'japan', 'global', 'kaigo hoken', 'technologie'],
+        responses: {
+          'indonesien': "🇮 Indonesien: Über 30 Millionen Senioren, unterstützt durch Healthy-Ageing-Programme.",
+          'japan': "🇯🇵 Japan: Kaigo Hoken und fortschrittliche Technologien wie Care Robotics und Sensoren zur Unterstützung des Alterns.",
+          'global': "🌍 Global: Bis 2050 voraussichtlich 2,1 Milliarden Menschen über 60 Jahre alt sein.",
+          'default': "🌍 Fragen Sie nach globalen Trends, Kaigo Hoken oder japanischen Technologien."
+        }
+      },
+      'en': {
+        keywords: ['indonesia', 'japan', 'global', 'kaigo hoken', 'robotics', 'sensors', 'telehealth'],
+        responses: {
+          'indonesia': "🇮🇩 Indonesia: Features robust Healthy Ageing programs including ILP, SKILAS, and Long-Term Care schemes.",
+          'japan': "🇯🇵 Japan: Features Kaigo Hoken and advanced human-centered technologies like care robotics, smart sensors, and telehealth.",
+          'global': "🌍 Globally: The world's population aged 60+ is projected to reach 2.1 billion by 2050.",
+          'default': "🌍 Explore global aging trends, Kaigo Hoken, and Japan's LTC technologies."
+        }
+      }
+    };
+
+    function setAILanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active-lang'));
+      event.currentTarget.classList.add('active-lang');
+      document.getElementById('ai-speech-bubble').innerText = `"${aiGreetings[lang]}"`;
+    }
+
+    function handleAIKeypress(event) {
+      if (event.key === 'Enter') {
+        askAICompanion();
+      }
+    }
+
+    function askAICompanion() {
+      const inputVal = document.getElementById('ai-user-input').value.toLowerCase();
+      const bubble = document.getElementById('ai-speech-bubble');
+      
+      if (!inputVal.trim()) return;
+
+      const langData = knowledgeBase[currentLang] || knowledgeBase['en'];
+      let matchedResponse = langData.responses['default'];
+
+      for (let key of langData.keywords) {
+        if (inputVal.includes(key)) {
+          if (langData.responses[key]) {
+            matchedResponse = langData.responses[key];
+            break;
+          }
+        }
+      }
+
+      if (matchedResponse === langData.responses['default'] && inputVal.length > 3) {
+        if (currentLang === 'id') {
+          matchedResponse = `💡 Mengenai "${inputVal}": Hal ini merupakan bagian penting dalam implementasi teknologi LTC dan Healthy Ageing di Jepang.`;
+        } else if (currentLang === 'jp') {
+          matchedResponse = `💡 「${inputVal}」について：日本の介護テクノロジーと健康長寿における重要な要素です。`;
+        } else if (currentLang === 'de') {
+          matchedResponse = `💡 Zu "${inputVal}": Ein wichtiger Aspekt der LTC-Technologien in Japan.`;
+        } else {
+          matchedResponse = `💡 Regarding "${inputVal}": This is a key component within Japan's LTC technology framework.`;
+        }
+      }
+
+      bubble.innerText = `"${matchedResponse}"`;
+      document.getElementById('ai-user-input').value = "";
+    }
+  </script>
+</body>
+</html>
